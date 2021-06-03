@@ -1,0 +1,153 @@
+version: "2.0"
+
+intents:
+  - greet
+  - goodbye
+ # - affirm
+ # - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - change_directory
+#  - request_restaurant
+  - affirm
+  - deny
+  - inform
+  - change_directory_to
+  - start_trainer
+
+actions:
+  - action_hello_world
+  - validate_trainer_form
+
+entities:
+#  - cuisine
+#  - number
+  - directory
+  - cd_answer
+  - mkdir_answer
+  - outdoor_seating
+
+slots:
+#  cuisine:
+#    type: text
+#    auto_fill: false
+#    influence_conversation: false
+#  num_people:
+#    type: float
+#    auto_fill: false
+#    influence_conversation: false
+#  outdoor_seating:
+#    type: text
+#    auto_fill: false
+#    influence_conversation: false
+  directory:
+    type: text
+    auto_fill: false
+    influence_conversation: false
+  cd_answer:
+    type: text
+    auto_fill: false
+    influence_conversation: false   
+  mkdir_answer:
+    type: text
+    auto_fill: false
+    influence_conversation: false   
+  outdoor_seating:
+    type: text
+    auto_fill: false
+    influence_conversation: false   
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_cd:
+    - text: "You can use the cd command"
+
+  #utter_ask_cuisine:
+ #   - text: "What cuisine?"
+ # utter_ask_num_people:
+ #   - text: "How many people?"
+ # utter_ask_outdoor_seating:
+#    - text: "Do you want to sit outside?"
+ # utter_submit:
+ #   - text: "All done!"
+ # utter_slots_values:
+ #   - text: "I am going to run a restaurant search using the following parameters:\n
+ #           - cuisine: {cuisine}\n
+ #           - num_people: {num_people}\n
+ #           - outdoor_seating: {outdoor_seating}"
+
+  utter_slots_cd:
+    - text: "You can use the cd {directory} command"
+
+  utter_ask_directory:
+    - text: "Please give me the name of the directory"
+
+  utter_trainer_finished:
+    - text: "You have completed the quiz"
+
+  utter_ask_cd_answer:
+    - text: "how to cd ?"
+
+  utter_ask_mkdir_answer:
+    - text: "how to mkdir ?"
+
+  uttter_ask_outdoor_seating:
+    - text: "Want seat outside ?"
+
+
+forms:
+ # restaurant_form:
+ #   required_slots:
+ #       cuisine:
+ #         - type: from_entity
+ #           entity: cuisine
+ #       num_people:
+ #         - type: from_entity
+ #           entity: number
+ #       outdoor_seating:
+ #         - type: from_intent
+ #           intent: affirm
+ #           value: true
+ #         - type: from_intent
+ #           intent: deny
+ #           value: false
+
+  change_directory_form:
+    required_slots:
+      directory:
+        - type: from_text
+          entity: directory    
+
+  trainer_form:
+    required_slots:
+      cd_answer:
+        - type: from_text
+          entity: cd_answer
+      mkdir_answer:
+        - type: from_text
+          entity: mkdir_answer
+
+  
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
