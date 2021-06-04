@@ -31,6 +31,16 @@ nlu:
     - bye bye
     - see you later
 
+- intent: whoareyou
+  examples: |
+    - Who are you ? 
+    - What can you do?
+    - What is your job?
+    - What is your purpose?
+    - What is a bashbot?
+    - What are you?
+    - Explain yourself
+
 #- intent: affirm
 #  examples: |
 #    - yes
@@ -99,6 +109,49 @@ nlu:
     - what is the command to change the directory?
     - how to change dirs?
     - what to do to change directories?
+    - change directory
+    - how can I navigate directories?
+    - how can I change directories?
+
+- intent: mkdir
+  examples: |
+    - how to create a directory?
+    - how to make a directory?
+    - how to make a dir?
+    - What is the command to create a directory?
+    - Which command creates a direactory?
+    - create a directory
+    - how can I create a directory?
+    
+- intent: rm 
+  examples: |
+    - how to remove a file?
+    - how to delete a file?
+    - how to delete a document?
+    - Which command removes a file? 
+    - Which command deletes a file?
+    - delete a file
+    - how can I remove a file?
+
+- intent: rmrf
+  examples: |
+    - how to remove a directory?
+    - how to delete a directory?
+    - how to delete a directory?
+    - Which command removes a directory? 
+    - Which command deletes a directory?
+    - delete a directory
+    - how can I remove a directory?
+
+- intent: cat
+  examples: |
+    - how to print a file to console?
+    - how to open a file?
+    - how to read a file?
+    - which command reads a file?
+    - which command opens a file?
+    - how can I open a file?
+    - how can I read a file?
 
 #- intent: change_directory_to
 #  examples: |
@@ -153,3 +206,6 @@ nlu:
     - start quiz
     - quiz my bash skills
     - train my bash skills
+    - lets do a quiz
+    - let's do a quiz
+    - let's start a quiz

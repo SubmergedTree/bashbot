@@ -33,3 +33,8 @@ stories:
  # steps: 
  #   - intent: change_directory
  #   - action: utter_cd
+
+
+ # todo use stories with happy and unhappy paths-
+# for example: ask for filename to give a concrete example
+# use a condition to ask if a concrete example is needed

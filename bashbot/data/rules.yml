@@ -12,6 +12,40 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
+# TODO use form and form validation to distinguish between rm/rmrf/mkdir/read/cat
+# https://rasa.com/docs/rasa/forms#validating-form-input
+
+- rule: Greet the user
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Explain bashbot
+  steps:
+  - intent: whoareyou
+  - action: utter_whoami
+
+- rule: Explain mkdir
+  steps:
+  - intent: mkdir
+  - action: utter_mkdir 
+ 
+- rule: Explain rm
+  steps:
+  - intent: rm
+  - action: utter_rm
+
+- rule: Explain rmrf
+  steps:
+  - intent: rmrf
+  - action: utter_rmrf
+
+- rule: Explain cat
+  steps:
+  - intent: cat
+  - action: utter_cat
+
+
 #- rule: activate restaurant form
 #  steps:
 #    - intent: request_restaurant   # intent that triggers form activation

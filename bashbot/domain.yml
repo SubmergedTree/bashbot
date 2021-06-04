@@ -15,6 +15,11 @@ intents:
   - inform
   - change_directory_to
   - start_trainer
+  - whoareyou
+  - mkdir
+  - rm
+  - rmrf
+  - cat
 
 actions:
   - action_hello_world
@@ -60,11 +65,13 @@ slots:
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hey! Please ask me about bash commands or for a quiz."
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_whoami:
+  - text: "I am Bashbot. \n
+           I can explain you basic usage of the bash shell. \n
+          Also I can challenge your bash knowledge. \n
+          Ask me for a quiz"
 
   utter_did_that_help:
   - text: "Did that help you?"
@@ -80,6 +87,19 @@ responses:
 
   utter_cd:
     - text: "You can use the cd command"
+
+  utter_mkdir:
+    - text: "You can use the mkdir command to create new directories."
+
+  utter_rm:
+    - text: "You can use the mkdir command to create new directories."
+
+  utter_rmrf:
+    - text: "You can use the mkdir command to create new directories."
+
+  utter_cat:
+    - text: "You can use the mkdir command to create new directories."
+
 
   #utter_ask_cuisine:
  #   - text: "What cuisine?"
