@@ -37,7 +37,7 @@ class ValidateTrainerForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if slot_value == "cd foo":
+        if slot_value == "cd foo": # TODO do not use ==. check if wantend substring is in message. 
             dispatcher.utter_message(text="correct answer")
         else:
             dispatcher.utter_message(text="wrong answer")

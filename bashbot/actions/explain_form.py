@@ -6,7 +6,7 @@ from rasa_sdk.types import DomainDict
 
 
 #TODO search for keywords eg. delete and directory to print hint how to delete a directory
-
+# TODO should be an Action https://forum.rasa.com/t/set-slot-value-in-custom-action/11891
 class ValidateExplainForm(FormValidationAction):
     def name(self) -> Text:
         return "validate_explain_form"
@@ -25,6 +25,9 @@ class ValidateExplainForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         """Validate cuisine value."""
+
+        message = tracker.latest_message.text
+
 
         if slot_value.lower() in self.cuisine_db():
             # validation succeeded, set the value of the "cuisine" slot to value
