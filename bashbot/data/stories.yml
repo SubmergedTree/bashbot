@@ -36,7 +36,7 @@ stories:
 
   - story: explain command
     steps:
-    - intent: explain_command
+    - intent: explain_command # or work with different intents (mkdir, rm, rmrf...) -> test if that works
     - action: explain_action #  search for keywords in script to determine command (use tracker) also write command in slot; ask if detail example is necessary
     - intent: affirm
     - action: ask_parameter # read command from slot and ask for parameters e.g. filenam from cat
