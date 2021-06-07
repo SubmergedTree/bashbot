@@ -31,6 +31,12 @@ nlu:
     - bye bye
     - see you later
 
+- intent: thanks
+  examples: |
+    - thanks
+    - thank you
+    - thanks a lot
+
 - intent: whoareyou
   examples: |
     - Who are you ? 
@@ -49,6 +55,10 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - yea
+    - yee
+    - ja
+    - yep
 
 - intent: deny
   examples: |
@@ -60,40 +70,6 @@ nlu:
     - no way
     - not really
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
@@ -101,100 +77,8 @@ nlu:
     - am I talking to a bot?
     - am I talking to a human?
 
-
-#- intent:  change_directory
-#  examples: |
-#    - how to change directory?
-#    - how to jump into?
-#    - how to cd?
-#    - what is the command to change the directory?
-#    - how to change dirs?
-#    - what to do to change directories?
-#    - change directory
-#    - how can I navigate directories?
-#    - how can I change directories?
-
-#- intent: mkdir
-#  examples: |
-#    - how to create a directory?
-#    - how to make a directory?
-#    - how to make a dir?
-#    - What is the command to create a directory?
-#    - Which command creates a direactory?
-#    - create a directory
-#    - how can I create a directory?
-    
-#- intent: rm 
-#  examples: |
-#    - how to remove a file?
-#    - how to delete a file?
-#    - how to delete a document?
-#    - Which command removes a file? 
-#    - Which command deletes a file?
-#    - delete a file
-#    - how can I remove a file?
-
-#- intent: rmrf
-#  examples: |
-#    - how to remove a directory?
-#    - how to delete a directory?
-#    - how to delete a directory?
-#    - Which command removes a directory? 
-#    - Which command deletes a directory?
-#    - delete a directory
-#    - how can I remove a directory?
-
-#- intent: cat
-#  examples: |
-#    - how to print a file to console?
-#    - how to open a file?
-#    - how to read a file?
-#    - which command reads a file?
-#    - which command opens a file?
-#    - how can I open a file?
-#    - how can I read a file?
-
-#- intent: change_directory_to
-#  examples: |
-#    - change directory to [foo](directory)
-#    - jump to [baz](directory)
-
-#- intent: request_restaurant
-#  examples: |
-#    - im looking for a restaurant
-#    - can i get [swedish](cuisine) food in any area
-#    - a restaurant that serves [caribbean](cuisine) food
-#    - id like a restaurant
-#    - im looking for a restaurant that serves [mediterranean](cuisine) food
-#    - can i find a restaurant that serves [chinese](cuisine)
-
-- intent: affirm
-  examples: |
-    - Yes
-    - yes, please
-    - yup
-- intent: deny
-  examples: |
-    - no don't
-    - no
-    - no I don't want that
-
 - intent: inform
-  examples: |
-    - [afghan](cuisine) food
-    - how bout [asian oriental](cuisine)
-    - what about [indian](cuisine) food
-    - uh how about [turkish](cuisine) type of food
-    - um [english](cuisine)
-    - im looking for [tuscan](cuisine) food
-    - id like [moroccan](cuisine) food
-    - for ten people
-    - 2 people
-    - for three people
-    - just one person
-    - book for seven people
-    - 2 please
-    - nine people    
+  examples: | 
     - change directory to [](directory)
     - jump to [](directory)
 
@@ -210,3 +94,42 @@ nlu:
     - lets do a quiz
     - let's do a quiz
     - let's start a quiz
+
+- intent: explain_cd
+  examples: |
+    - how to change a directory
+    - how to jump into a directory
+    - how to change directories
+   # - how to change a folder
+   # - how to jump into a folder
+   # - how to change folders
+
+- intent: explain_mkdir
+  examples: |
+    - explain how to create a directory
+    - how to create a directory
+    - how to create directories
+   # - explain how to create a folder
+  #  - how to create a folder
+  #  - how to create folders
+
+- intent: explain_rmrf
+  examples: |
+    - explain how to delete a directory
+    - how to delete a directory
+    - how to delete directories
+  #  - explain how to delete a folder
+  #  - how to delete a folder
+  #  - how to delete folders
+
+- intent: explain_rm
+  examples: |
+    - explain how to delete a file
+    - how to delete a file
+    - how to delete files
+
+- intent: explain_cat
+  examples: |
+    - explain how to read a file
+    - how to read a file
+    - how to read files

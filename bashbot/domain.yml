@@ -3,53 +3,38 @@ version: "2.0"
 intents:
   - greet
   - goodbye
+  - thanks
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
-  - change_directory
-#  - request_restaurant
-  - affirm
-  - deny
   - inform
-  - change_directory_to
   - start_trainer
   - whoareyou
-  - mkdir
-  - rm
-  - rmrf
-  - cat
+  - explain_mkdir
+  - explain_cat
+  - explain_rm
+  - explain_rmrf
+  - explain_cd
 
 actions:
-  - action_hello_world
   - validate_trainer_form
+  - reset_trainer_action
+  - explain_action
+  - ask_explain_action
+  - create_example_action
+  - validate_example_parameter_form
 
 entities:
-#  - cuisine
-#  - number
-  - directory
   - cd_answer
   - mkdir_answer
-  - outdoor_seating
+  - cat_answer
+  - rm_answer
+  - rmrf_answer
+  - detected_command
+  - example_parameter
 
 slots:
-#  cuisine:
-#    type: text
-#    auto_fill: false
-#    influence_conversation: false
-#  num_people:
-#    type: float
-#    auto_fill: false
-#    influence_conversation: false
-#  outdoor_seating:
-#    type: text
-#    auto_fill: false
-#    influence_conversation: false
-  directory:
-    type: text
-    auto_fill: false
-    influence_conversation: false
+  # for trainer
   cd_answer:
     type: text
     auto_fill: false
@@ -58,7 +43,24 @@ slots:
     type: text
     auto_fill: false
     influence_conversation: false   
-  outdoor_seating:
+  cat_answer:
+    type: text
+    auto_fill: false
+    influence_conversation: false   
+  rm_answer:
+    type: text
+    auto_fill: false
+    influence_conversation: false   
+  rmrf_answer:
+    type: text
+    auto_fill: false
+    influence_conversation: false   
+  # for explaining commands
+  detected_command:
+    type: text
+    auto_fill: false
+    influence_conversation: false   
+  example_parameter:
     type: text
     auto_fill: false
     influence_conversation: false   
@@ -69,12 +71,9 @@ responses:
 
   utter_whoami:
   - text: "I am Bashbot. \n
-           I can explain you basic usage of the bash shell. \n
+          I can explain you basic usage of the bash shell. \n
           Also I can challenge your bash knowledge. \n
           Ask me for a quiz"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
 
   utter_happy:
   - text: "Great, carry on!"
@@ -82,81 +81,34 @@ responses:
   utter_goodbye:
   - text: "Bye"
 
+  utter_helpfull:
+  - text: I hope I was helpfull.
+
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
-  utter_cd:
-    - text: "You can use the cd command"
+  utter_ask_cd_answer:
+    - text: "how to change to a directory named <foo>?"
 
-  utter_mkdir:
-    - text: "You can use the mkdir command to create new directories."
+  utter_ask_mkdir_answer:
+    - text: "how to create a directory with the name <foo>?"
 
-  utter_rm:
-    - text: "You can use the rm command to delete a file."
+  utter_ask_cat_answer:
+    - text: "how to read a file with the name <foo>?"
 
-  utter_rmrf:
-    - text: "You can use the rm -rf command to remove a directory."
+  utter_ask_rm_answer:
+    - text: "how to remove a file named <foo>?"
 
-  utter_cat:
-    - text: "You can use the cat command to read a file."
-
-
-  #utter_ask_cuisine:
- #   - text: "What cuisine?"
- # utter_ask_num_people:
- #   - text: "How many people?"
- # utter_ask_outdoor_seating:
-#    - text: "Do you want to sit outside?"
- # utter_submit:
- #   - text: "All done!"
- # utter_slots_values:
- #   - text: "I am going to run a restaurant search using the following parameters:\n
- #           - cuisine: {cuisine}\n
- #           - num_people: {num_people}\n
- #           - outdoor_seating: {outdoor_seating}"
-
-  utter_slots_cd:
-    - text: "You can use the cd {directory} command"
-
-  utter_ask_directory:
-    - text: "Please give me the name of the directory"
+  utter_ask_rmrf_answer:
+    - text: "how to remove a directory named <foo>?"
 
   utter_trainer_finished:
     - text: "You have completed the quiz"
 
-  utter_ask_cd_answer:
-    - text: "how to cd ?"
-
-  utter_ask_mkdir_answer:
-    - text: "how to mkdir ?"
-
-  uttter_ask_outdoor_seating:
-    - text: "Want seat outside ?"
-
+  utter_ask_example_parameter:
+    - text: "Please enter only the parameter."
 
 forms:
- # restaurant_form:
- #   required_slots:
- #       cuisine:
- #         - type: from_entity
- #           entity: cuisine
- #       num_people:
- #         - type: from_entity
- #           entity: number
- #       outdoor_seating:
- #         - type: from_intent
- #           intent: affirm
- #           value: true
- #         - type: from_intent
- #           intent: deny
- #           value: false
-
-  change_directory_form:
-    required_slots:
-      directory:
-        - type: from_text
-          entity: directory    
-
   trainer_form:
     required_slots:
       cd_answer:
@@ -165,8 +117,21 @@ forms:
       mkdir_answer:
         - type: from_text
           entity: mkdir_answer
+      cat_answer:
+        - type: from_text
+          entity: cat_answer
+      rm_answer:
+        - type: from_text
+          entity: rm_answer
+      rmrf_answer:
+        - type: from_text
+          entity: rmrf_answer     
 
-  
+  example_parameter_form:
+    required_slots:
+      example_parameter:
+        - type: from_text
+          entity: example_parameter
 
 session_config:
   session_expiration_time: 60

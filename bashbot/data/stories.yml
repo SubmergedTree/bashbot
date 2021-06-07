@@ -1,55 +1,30 @@
 version: "2.0"
 
 stories:
+- story: explain bash command with detail explanation
+  steps:
+  - or:
+    - intent: explain_mkdir
+    - intent: explain_cat
+    - intent: explain_rm
+    - intent: explain_rmrf
+    - intent: explain_cd
+  - action: explain_action
+  - intent: affirm
+  - action: ask_explain_action
+  - action: example_parameter_form
+  - active_loop: example_parameter_form
+  - action: create_example_action
 
-#- story: happy path
-#  steps:
-#  - intent: greet
-#  - action: utter_greet
-#  - intent: mood_great
-#  - action: action_hello_world
-
-#- story: sad path 1
-#  steps:
-#  - intent: greet
-#  - action: utter_greet
-#  - intent: mood_unhappy
-#  - action: utter_cheer_up
-#  - action: utter_did_that_help
-#  - intent: affirm
-#  - action: utter_happy
-
-#- story: sad path 2
-#  steps:
-#  - intent: greet
-#  - action: utter_greet
-#  - intent: mood_unhappy
-#  - action: utter_cheer_up
-#  - action: utter_did_that_help
-#  - intent: deny
-#  - action: utter_goodbye
-
-#- story: cd path 
- # steps: 
- #   - intent: change_directory
- #   - action: utter_cd
-
-  - story: explain command
-    steps:
-    - intent: explain_command # or work with different intents (mkdir, rm, rmrf...) -> test if that works
-    - action: explain_action #  search for keywords in script to determine command (use tracker) also write command in slot; ask if detail example is necessary
-    - intent: affirm
-    - action: ask_parameter # read command from slot and ask for parameters e.g. filenam from cat
-    - intent: enter_parameter # as whole text use complete message as parameter
-    - action: give_example 
-
-  - story: explain command
-    steps:
-    - intent: explain_command
-    - action: explain_action #  search for keywords in script to determine command (use tracker)
-    - intent: deny
-    - action: utter_goodbye # cli bot should be closed
-
- # todo use stories with happy and unhappy paths-
-# for example: ask for filename to give a concrete example
-# use a condition to ask if a concrete example is needed
+- story: explain bash command without detail explanation
+  steps:
+  - or:
+    - intent: explain_mkdir
+    - intent: explain_cat
+    - intent: explain_rm
+    - intent: explain_rmrf
+    - intent: explain_cd
+  - action: explain_action
+  - intent: deny
+  - action: utter_helpfull
+  - action: utter_goodbye

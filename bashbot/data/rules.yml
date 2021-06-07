@@ -1,7 +1,6 @@
 version: "2.0"
 
 rules:
-
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
@@ -12,68 +11,20 @@ rules:
   - intent: bot_challenge
   - action: utter_iamabot
 
-# TODO use form and form validation to distinguish between rm/rmrf/mkdir/read/cat
-# https://rasa.com/docs/rasa/forms#validating-form-input
-
 - rule: Greet the user
   steps:
   - intent: greet
   - action: utter_greet
 
+- rule: appreciate feedback
+  steps:
+  - intent: thanks
+  - action: utter_helpfull
+
 - rule: Explain bashbot
   steps:
   - intent: whoareyou
   - action: utter_whoami
-
-- rule: Explain mkdir
-  steps:
-  - intent: mkdir
-  - action: utter_mkdir 
- 
-- rule: Explain rm
-  steps:
-  - intent: rm
-  - action: utter_rm
-
-- rule: Explain rmrf
-  steps:
-  - intent: rmrf
-  - action: utter_rmrf
-
-- rule: Explain cat
-  steps:
-  - intent: cat
-  - action: utter_cat
-
-
-#- rule: activate restaurant form
-#  steps:
-#    - intent: request_restaurant   # intent that triggers form activation
-#    - action: restaurant_form      # run the form
-#    - active_loop: restaurant_form # this form is active
-
-#- rule: submit form
-#  condition:
-#  - active_loop: restaurant_form   # this form must be active
-#  steps:
-#    - action: restaurant_form      # run the form
-#    - active_loop: null            # the form is no longer active because it has been filled
-#    - action: utter_submit         # action to take after the form is complete
-#    - action: utter_slots_values   # action to take after the form is complete
-
-- rule: activate change directory to
-  steps:
-    - intent: change_directory
-    - action: change_directory_form
-    - active_loop: change_directory_form
-
-- rule: submit change directory
-  condition: 
-    - active_loop: change_directory_form
-  steps:
-    - action: change_directory_form
-    - active_loop: null
-    - action: utter_slots_cd
 
 - rule: trainer mode
   steps: 
@@ -88,3 +39,4 @@ rules:
     - action: trainer_form
     - active_loop: null
     - action: utter_trainer_finished
+    - action: reset_trainer_action

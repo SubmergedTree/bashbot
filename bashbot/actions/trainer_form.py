@@ -24,11 +24,9 @@ class ValidateTrainerForm(FormValidationAction):
       #  print(slots_mapped_in_domain)
       #  next_question = ["mkdir_answer"]
       #  if tracker.slots.get("cd_answer") is True:
-       #  additional_slots.append("mkdir_answer")
-     #   return slots_mapped_in_domain
-        
-        return  [ "outdoor_seating"] #slots_mapped_in_domain + ["outdoor_seating"]
-
+      #  additional_slots.append("mkdir_answer")
+      #  return slots_mapped_in_domain
+        return slots_mapped_in_domain # [ "outdoor_seating"] #slots_mapped_in_domain + ["outdoor_seating"]
 
     def validate_cd_answer(
         self,
@@ -37,12 +35,11 @@ class ValidateTrainerForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if slot_value == "cd foo": # TODO do not use ==. check if wantend substring is in message. 
+        if "cd foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
             dispatcher.utter_message(text="wrong answer")
         return {"cd_answer": slot_value}
-
 
     def validate_mkdir_answer(
         self,
@@ -51,17 +48,47 @@ class ValidateTrainerForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if slot_value == "mkdir foo":
+        if "cd foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
             dispatcher.utter_message(text="wrong answer")
         return {"cd_answer": slot_value}
 
+    def validate_cat_answer(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        if "cat foo" in slot_value:
+            dispatcher.utter_message(text="correct answer")
+        else:
+            dispatcher.utter_message(text="wrong answer")
+        return {"cd_answer": slot_value}
 
-  #  async def extract_outdoor_seating(
-  #      self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict
-  #  ) -> Dict[Text, Any]:
-  #      text_of_last_user_message = tracker.latest_message.get("text")
-  #      print(text_of_last_user_message)
-  #      sit_outside = "outdoor" in text_of_last_user_message
-  #      return {"outdoor_seating": sit_outside}
+    def validate_rm_answer(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        if "rm foo" in slot_value:
+            dispatcher.utter_message(text="correct answer")
+        else:
+            dispatcher.utter_message(text="wrong answer")
+        return {"cd_answer": slot_value}
+
+    def validate_rmrf_answer(
+        self,
+        slot_value: Any,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: DomainDict,
+    ) -> Dict[Text, Any]:
+        if "rm -rf foo" in slot_value:
+            dispatcher.utter_message(text="correct answer")
+        else:
+            dispatcher.utter_message(text="wrong answer")
+        return {"cd_answer": slot_value}
