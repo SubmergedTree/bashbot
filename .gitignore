@@ -2,3 +2,4 @@ venv
 
 bashbot/models
 bashbot/results
+bashbot/actions/__pycache__
