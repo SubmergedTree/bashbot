@@ -69,6 +69,29 @@ nlu:
     - don't like that
     - no way
     - not really
+    - no I am fine
+
+- intent: need_documentation
+  examples: |
+    - I need more documentation
+    - documentation
+    - more info needed
+    - more info
+    - manual needed
+    - I need the manual 
+    - docs
+    - I need docs
+    - I need more info
+    - I need info
+
+- intent: need_example
+  examples: |
+    - I need an example
+    - example please
+    - example
+    - show me an example
+    - example needed
+    - show example
 
 - intent: bot_challenge
   examples: |

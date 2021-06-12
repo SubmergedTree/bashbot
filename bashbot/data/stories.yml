@@ -10,12 +10,25 @@ stories:
     - intent: explain_rmrf
     - intent: explain_cd
   - action: explain_action
-  - intent: affirm
+  - intent: need_example
   - action: ask_explain_action
   - action: example_parameter_form
   - active_loop: example_parameter_form
   - action: create_example_action
 
+- story: explain bash command with detail explanation
+  steps:
+  - or:
+    - intent: explain_mkdir
+    - intent: explain_cat
+    - intent: explain_rm
+    - intent: explain_rmrf
+    - intent: explain_cd
+  - action: explain_action
+  - intent: need_documentation
+  - action: documentation_action
+
+# TODO reset detected command slot action
 - story: explain bash command without detail explanation
   steps:
   - or:

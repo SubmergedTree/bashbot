@@ -33,7 +33,7 @@ class ExplainAction(Action):
         if intent != None:
             (command, description) = self.get_explanation_from_intent(intent)
             dispatcher.utter_message(text=description)
-            dispatcher.utter_message(text="Do you need an example?")
+            dispatcher.utter_message(text="Do you need an example or more documentation?")
             return [SlotSet("detected_command", command)]
         else:
             return []

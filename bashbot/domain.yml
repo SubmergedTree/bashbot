@@ -15,6 +15,8 @@ intents:
   - explain_rm
   - explain_rmrf
   - explain_cd
+  - need_documentation
+  - need_example
 
 actions:
   - validate_trainer_form
@@ -23,6 +25,7 @@ actions:
   - ask_explain_action
   - create_example_action
   - validate_example_parameter_form
+  - documentation_action
 
 entities:
   - cd_answer
