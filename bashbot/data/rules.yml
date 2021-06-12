@@ -29,6 +29,7 @@ rules:
 - rule: trainer mode
   steps: 
     - intent: start_trainer
+    - action: utter_quiz
     - action: trainer_form
     - active_loop: trainer_form
 

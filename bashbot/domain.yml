@@ -90,6 +90,9 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
+  utter_quiz:
+  - text: "Ok. Let's do a quiz!"
+
   utter_ask_cd_answer:
     - text: "how to change to a directory named <foo>?"
 
