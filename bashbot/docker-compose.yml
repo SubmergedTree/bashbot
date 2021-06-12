@@ -1,0 +1,24 @@
+version: '3.0'
+services:
+    rasa:
+        image: rasa/rasa:latest-full
+        ports:
+            - 5005:5005
+        volumes:
+            - ./:/app
+        command:
+            - run
+            - --cors
+            - "*"
+    action:
+        image: action_server:latest
+        expose: 
+            - 5055
+    duckling:
+        image: rasa/duckling
+        ports:
+            - 8000:8000
+    webclient:
+        image: webclient:latest
+        ports:
+            - 80:80

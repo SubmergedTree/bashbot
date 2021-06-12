@@ -1,0 +1,7 @@
+# https://rasa.com/docs/rasa/how-to-deploy#manually-building-an-action-server
+
+FROM rasa/rasa-sdk:2.6.0
+WORKDIR /app
+USER root
+COPY ./actions /app/actions
+USER 1001

@@ -48,7 +48,7 @@ Start the bot with ```bb <first command>```
 - rm <filename> and rm -rf <directory>
 - cat
 
-## Install
+## Install on machine
 Spin up a rasa/duckling intance:
 ```docker run -p 8000:8000 rasa/duckling```
 
@@ -65,3 +65,17 @@ run custom actions:
 
 open rasa shell:
 ```rasa shell```
+
+## Rasa server mode
+```rasa run --credentials ./credentials.yml --enable-api --model ./models --endpoint ./endpoints.yml --cors "*" ```
+
+## Install in docker
+
+Build action server container:
+```cd bashbot```
+```docker build -t action_server -f Dockerfile.action . ```
+
+Build webclient container:
+```cd webclient```
+```docker build -t webclient . ```
+
