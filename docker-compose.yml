@@ -1,0 +1,22 @@
+version: '3.0'
+services:
+    rasa:
+        image: dockythedockerydocker/bashbot-rasa-core:latest
+        ports:
+            - 5005:5005
+        command:
+            - run
+            - --cors
+            - "*"
+    action:
+        image: dockythedockerydocker/bashbot-action-server:latest
+        expose: 
+            - 5055
+    duckling:
+        image: rasa/duckling:latest
+        ports:
+            - 8000:8000
+    webclient:
+        image: dockythedockerydocker/bashbot-webclient:latest
+        ports:
+            - 80:80

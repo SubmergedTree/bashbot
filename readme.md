@@ -69,13 +69,22 @@ open rasa shell:
 ## Rasa server mode
 ```rasa run --credentials ./credentials.yml --enable-api --model ./models --endpoint ./endpoints.yml --cors "*" ```
 
-## Install in docker
+## Local docker setup
 
-Build action server container:
+Build action server and core server container:
 ```cd bashbot```
 ```docker build -t action_server -f Dockerfile.action . ```
+```docker build -t rasa_bashbot -f Dockerfile.core . ```
 
 Build webclient container:
 ```cd webclient```
 ```docker build -t webclient . ```
 
+Run the local docker-compose file:
+```docker-compose -f docker-compose.local.yml up ```
+
+Point your browser to localhost:80.
+
+## Setup with containers from .
+Run the docker-compose file:
+```docker-compose -f docker-compose.yml up ```

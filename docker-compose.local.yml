@@ -1,11 +1,9 @@
 version: '3.0'
 services:
     rasa:
-        image: rasa/rasa:latest-full
+        image: rasa_bashbot
         ports:
             - 5005:5005
-        volumes:
-            - ./:/app
         command:
             - run
             - --cors
