@@ -85,6 +85,6 @@ Run the local docker-compose file:
 
 Point your browser to localhost:80.
 
-## Setup with containers from .
+## Setup with containers from dockerhub.
 Run the docker-compose file:
 ```docker-compose -f docker-compose.yml up ```
