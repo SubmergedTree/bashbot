@@ -8,8 +8,8 @@ pipeline:
   - name: CountVectorsFeaturizer
     token_pattern: (?u)\b\w+\b
   - name: DucklingEntityExtractor
-   # url: http://localhost:8000 # local
-    url: http://duckling:8000 # for docker deployment
+    url: http://localhost:8000 # local
+   # url: http://duckling:8000 # for docker deployment
     dimensions:
       - number
   - name: DIETClassifier

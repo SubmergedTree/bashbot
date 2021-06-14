@@ -17,6 +17,7 @@ intents:
   - explain_cd
   - need_documentation
   - need_example
+  - generic_commands
 
 actions:
   - validate_trainer_form

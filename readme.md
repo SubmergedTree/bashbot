@@ -60,6 +60,9 @@ venv can be deactivated with: ```deactivate``` command
 run custom actions:
 ```rasa run actions```
 
+install dependecy:
+https://pypi.org/project/python-Levenshtein/
+# TODO must be installed in action server docker file
 
 ## Open a rasa shell to test the bot
 

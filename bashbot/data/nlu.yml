@@ -156,3 +156,8 @@ nlu:
     - explain how to read a file
     - how to read a file
     - how to read files
+
+- intent: generic_commands
+  examples: |
+    - how to
+    - explain how

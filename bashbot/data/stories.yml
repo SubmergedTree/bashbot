@@ -9,6 +9,7 @@ stories:
     - intent: explain_rm
     - intent: explain_rmrf
     - intent: explain_cd
+    - intent: generic_commands
   - action: explain_action
   - intent: need_example
   - action: ask_explain_action
@@ -24,6 +25,7 @@ stories:
     - intent: explain_rm
     - intent: explain_rmrf
     - intent: explain_cd
+    - intent: generic_commands
   - action: explain_action
   - intent: need_documentation
   - action: documentation_action
@@ -37,6 +39,7 @@ stories:
     - intent: explain_rm
     - intent: explain_rmrf
     - intent: explain_cd
+    - intent: generic_commands
   - action: explain_action
   - intent: deny
   - action: utter_helpfull
