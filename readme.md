@@ -62,7 +62,6 @@ run custom actions:
 
 install dependecy:
 https://pypi.org/project/python-Levenshtein/
-# TODO must be installed in action server docker file
 
 ## Open a rasa shell to test the bot
 
@@ -91,3 +90,12 @@ Point your browser to localhost:80.
 ## Setup with containers from dockerhub.
 Run the docker-compose file:
 ```docker-compose -f docker-compose.yml up ```
+
+
+# TODO
+- python-Levenshtein must be installed in action server container. Should be done in dockerfile
+- buttons for additional explanation, example or nothing needed
+- remove text to speech in webapp
+- remove bye response after example
+- add support for additional commands
+- man pages documentation should be printed in one response message instead of multiple small messages
