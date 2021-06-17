@@ -1,7 +1,12 @@
 # https://rasa.com/docs/rasa/how-to-deploy#manually-building-an-action-server
 
 FROM rasa/rasa-sdk:2.6.0
-WORKDIR /app
 USER root
+RUN apt-get update && apt-get install -y \
+    build-essential \ 
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip install python-Levenshtein 
+WORKDIR /app
 COPY ./actions /app/actions
 USER 1001
