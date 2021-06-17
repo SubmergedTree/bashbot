@@ -35,6 +35,8 @@ class ValidateTrainerForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
+        if self.should_deactivate(slot_value):
+            return {"requested_slot":None}
         if "cd foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
@@ -48,7 +50,9 @@ class ValidateTrainerForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
-        if "cd foo" in slot_value:
+        if self.should_deactivate(slot_value):
+            return {"requested_slot":None}
+        if "mkdir foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
             dispatcher.utter_message(text="wrong answer")
@@ -61,6 +65,8 @@ class ValidateTrainerForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
+        if self.should_deactivate(slot_value):
+            return {"requested_slot":None}
         if "cat foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
@@ -74,6 +80,8 @@ class ValidateTrainerForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
+        if self.should_deactivate(slot_value):
+            return {"requested_slot":None}
         if "rm foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
@@ -87,8 +95,13 @@ class ValidateTrainerForm(FormValidationAction):
         tracker: Tracker,
         domain: DomainDict,
     ) -> Dict[Text, Any]:
+        if self.should_deactivate(slot_value):
+            return {"requested_slot":None}
         if "rm -rf foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
             dispatcher.utter_message(text="wrong answer")
         return {"cd_answer": slot_value}
+
+    def should_deactivate(self, message):
+        return "stop" in message "deactivate" in message or "leave" in message or "quit" in message
