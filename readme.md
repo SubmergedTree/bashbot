@@ -99,3 +99,7 @@ Run the docker-compose file:
 - remove bye response after example
 - add support for additional commands
 - man pages documentation should be printed in one response message instead of multiple small messages
+- beschreibung beim starten vom bot was er tut (bulletpoints)
+- einleitung für quiz
+- quiz verlassbar machen
+- erklären bei quiz wie funktioniert
