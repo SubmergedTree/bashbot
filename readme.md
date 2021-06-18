@@ -96,11 +96,13 @@ Run the docker-compose file:
 - python-Levenshtein must be installed in action server container. Should be done in dockerfile DONE
 - buttons for additional explanation, example or nothing needed
 - remove text to speech in webapp
-- remove bye response after example
+- remove bye response after example DONE
 - add support for additional commands
+- man pages support in container DONE
 - man pages documentation should be printed in one response message instead of multiple small messages
-- beschreibung beim starten vom bot was er tut (bulletpoints)
-- einleitung für quiz
+- beschreibung beim starten vom bot was er tut (bulletpoints) DONE
+- einleitung für quiz. DONE
 - quiz verlassbar machen DONE
-- erklären bei quiz wie funktioniert
+- erklären bei quiz wie funktioniert DONE
 - add touch command
+- stop quiz different response
