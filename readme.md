@@ -97,12 +97,11 @@ Run the docker-compose file:
 - buttons for additional explanation, example or nothing needed
 - remove text to speech in webapp
 - remove bye response after example DONE
-- add support for additional commands
+- add support for additional commands (e.g. touch)
 - man pages support in container DONE
-- man pages documentation should be printed in one response message instead of multiple small messages
+- man pages documentation should be printed in one response message instead of multiple small messages DONE
 - beschreibung beim starten vom bot was er tut (bulletpoints) DONE
 - einleitung für quiz. DONE
 - quiz verlassbar machen DONE
 - erklären bei quiz wie funktioniert DONE
-- add touch command
 - stop quiz different response

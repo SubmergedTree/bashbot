@@ -26,4 +26,4 @@ class DocumentationAction(Action):
                             stderr=subprocess.PIPE)
         stdout, stderr = process.communicate()
         print(stderr.decode("utf-8"))
-        return stdout.decode("utf-8")       
+        return stdout.decode("utf-8").replace("\n\n", "\n")    
