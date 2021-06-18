@@ -1,12 +1,28 @@
 # https://rasa.com/docs/rasa/how-to-deploy#manually-building-an-action-server
 
-FROM rasa/rasa-sdk:2.6.0
+#FROM rasa/rasa-sdk:latest
+FROM ubuntu:latest
 USER root
+
+#RUN sed -i 's:^path-exclude=/usr/share/man:#path-exclude=/usr/share/man:' \
+#        /etc/dpkg/dpkg.cfg.d/excludes
+
+RUN apt-get update && yes | unminimize
 RUN apt-get update && apt-get install -y \
+    man \
+    man-db \
+    manpages-posix \
     build-essential \ 
     python3-dev \
+    python3.6 \
+    python3-pip \
     && rm -rf /var/lib/apt/lists/*
+RUN pip install rasa
 RUN pip install python-Levenshtein 
+
 WORKDIR /app
 COPY ./actions /app/actions
+
+CMD ["rasa", "run", "actions"] 
+
 USER 1001
