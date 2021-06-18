@@ -43,4 +43,4 @@ stories:
   - action: explain_action
   - intent: deny
   - action: utter_helpfull
-  - action: utter_goodbye
+

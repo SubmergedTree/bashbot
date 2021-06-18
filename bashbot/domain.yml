@@ -92,7 +92,7 @@ responses:
   - text: "I am a bot, powered by Rasa."
 
   utter_quiz:
-  - text: "Ok. Let's do a quiz!"
+  - text: "Ok. Let's do a quiz! I will ask you some questions about basic bash commands."
 
   utter_ask_cd_answer:
     - text: "how to change to a directory named <foo>?"
