@@ -95,7 +95,7 @@ Run the docker-compose file:
 # TODO
 - python-Levenshtein must be installed in action server container. Should be done in dockerfile DONE
 - buttons for additional explanation, example or nothing needed
-- remove text to speech in webapp
+- remove text to speech in webapp DONE
 - remove bye response after example DONE
 - add support for additional commands (e.g. touch)
 - man pages support in container DONE
