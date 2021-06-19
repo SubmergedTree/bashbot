@@ -91,6 +91,14 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
+  utter_explain:
+  - text: "Do you need an example or more documentation?"
+    buttons:
+      - title: "Example"
+        payload: "/need_example"
+      - title: "Documentation"
+        payload: "/need_documentation"
+
   utter_quiz:
   - text: "Ok. Let's do a quiz! I will ask you some questions about basic bash commands."
 

@@ -11,6 +11,7 @@ stories:
     - intent: explain_cd
     - intent: generic_commands
   - action: explain_action
+  - action: utter_explain
   - intent: need_example
   - action: ask_explain_action
   - action: example_parameter_form
@@ -27,6 +28,7 @@ stories:
     - intent: explain_cd
     - intent: generic_commands
   - action: explain_action
+  - action: utter_explain
   - intent: need_documentation
   - action: documentation_action
 
@@ -41,6 +43,7 @@ stories:
     - intent: explain_cd
     - intent: generic_commands
   - action: explain_action
+  - action: utter_explain
   - intent: deny
   - action: utter_helpfull
 
