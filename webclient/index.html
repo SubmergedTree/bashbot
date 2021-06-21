@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>BashBot Webclient</title>
-    <link rel="stylesheet" href="https://npm-scalableminds.s3.eu-central-1.amazonaws.com/@scalableminds/chatroom@master/dist/Chatroom.css" />
+   <!-- <link rel="stylesheet" href="https://npm-scalableminds.s3.eu-central-1.amazonaws.com/@scalableminds/chatroom@master/dist/Chatroom.css" /> -->
+    <link rel="stylesheet" href="Chatroom.css"/>
   </head>
   <body>
     <div class="chat-container"></div>
-    <script src="https://npm-scalableminds.s3.eu-central-1.amazonaws.com/@scalableminds/chatroom@master/dist/Chatroom.js"/></script>
+    <!--<script src="https://npm-scalableminds.s3.eu-central-1.amazonaws.com/@scalableminds/chatroom@master/dist/Chatroom.js"/></script>-->
+    <script src="Chatroom.js"/></script>
     <script type="text/javascript">
       var chatroom = new window.Chatroom({
         host: "http://localhost:5005",
@@ -20,4 +22,3 @@
       chatroom.openChat();
     </script>
   </body>
-</html>
