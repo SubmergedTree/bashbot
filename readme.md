@@ -104,4 +104,5 @@ Run the docker-compose file:
 - einleitung für quiz. DONE
 - quiz verlassbar machen DONE
 - erklären bei quiz wie funktioniert DONE
-- stop quiz different response
+- stop quiz different response DONE
+- tts is still active

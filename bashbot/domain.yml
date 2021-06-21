@@ -36,6 +36,7 @@ entities:
   - rmrf_answer
   - detected_command
   - example_parameter
+  - quiz_aborted
 
 slots:
   # for trainer
@@ -68,6 +69,10 @@ slots:
     type: text
     auto_fill: false
     influence_conversation: false   
+  quiz_aborted:
+    type: bool
+    auto_fill: false
+    influence_conversation: false   
 
 responses:
   utter_greet:
@@ -86,7 +91,7 @@ responses:
   - text: "Bye"
 
   utter_helpfull:
-  - text: I hope I was helpfull.
+  - text: "I hope I was helpfull."
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
@@ -98,6 +103,8 @@ responses:
         payload: "/need_example"
       - title: "Documentation"
         payload: "/need_documentation"
+      - title: "I'm good"
+        payload: "/deny"
 
   utter_quiz:
   - text: "Ok. Let's do a quiz! I will ask you some questions about basic bash commands."
@@ -117,8 +124,11 @@ responses:
   utter_ask_rmrf_answer:
     - text: "how to remove a directory named <foo>?"
 
-  utter_trainer_finished:
-    - text: "You have completed the quiz"
+ # utter_trainer_finished:
+ #   - text: "You have completed the quiz"
+
+ # utter_trainer_aborted:
+ #   - text: "You aborted the quiz."
 
   utter_ask_example_parameter:
     - text: "Please enter only the parameter."

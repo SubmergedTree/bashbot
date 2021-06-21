@@ -39,5 +39,5 @@ rules:
   steps:
     - action: trainer_form
     - active_loop: null
-    - action: utter_trainer_finished
+   # - action: utter_trainer_finished
     - action: reset_trainer_action

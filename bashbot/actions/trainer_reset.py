@@ -12,6 +12,12 @@ class ResetTrainerAction(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        if tracker.get_slot('quiz_aborted'):
+            dispatcher.utter_message("You aborted the quiz.")
+        else:
+            dispatcher.utter_message("You have completed the quiz.")
+
         return [SlotSet("cd_answer", None),
             SlotSet("mkdir_answer", None),
             SlotSet("cat_answer", None),

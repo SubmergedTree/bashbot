@@ -36,12 +36,12 @@ class ValidateTrainerForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         if self.should_deactivate(slot_value):
-            return {"requested_slot":None}
+            return {"requested_slot":None, "quiz_aborted": True}
         if "cd foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
             dispatcher.utter_message(text="wrong answer")
-        return {"cd_answer": slot_value}
+        return {"cd_answer": slot_value, "quiz_aborted": False}
 
     def validate_mkdir_answer(
         self,
@@ -51,12 +51,12 @@ class ValidateTrainerForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         if self.should_deactivate(slot_value):
-            return {"requested_slot":None}
+            return {"requested_slot":None, "quiz_aborted": True}
         if "mkdir foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
             dispatcher.utter_message(text="wrong answer")
-        return {"cd_answer": slot_value}
+        return {"cd_answer": slot_value, "quiz_aborted": False}
 
     def validate_cat_answer(
         self,
@@ -66,12 +66,12 @@ class ValidateTrainerForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         if self.should_deactivate(slot_value):
-            return {"requested_slot":None}
+            return {"requested_slot":None, "quiz_aborted": True}
         if "cat foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
             dispatcher.utter_message(text="wrong answer")
-        return {"cd_answer": slot_value}
+        return {"cd_answer": slot_value, "quiz_aborted": False}
 
     def validate_rm_answer(
         self,
@@ -81,12 +81,12 @@ class ValidateTrainerForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         if self.should_deactivate(slot_value):
-            return {"requested_slot":None}
+            return {"requested_slot":None, "quiz_aborted": True}
         if "rm foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
             dispatcher.utter_message(text="wrong answer")
-        return {"cd_answer": slot_value}
+        return {"cd_answer": slot_value, "quiz_aborted": False}
 
     def validate_rmrf_answer(
         self,
@@ -96,12 +96,12 @@ class ValidateTrainerForm(FormValidationAction):
         domain: DomainDict,
     ) -> Dict[Text, Any]:
         if self.should_deactivate(slot_value):
-            return {"requested_slot":None}
+            return {"requested_slot":None, "quiz_aborted": True}
         if "rm -rf foo" in slot_value:
             dispatcher.utter_message(text="correct answer")
         else:
             dispatcher.utter_message(text="wrong answer")
-        return {"cd_answer": slot_value}
+        return {"cd_answer": slot_value, "quiz_aborted": False}
 
     def should_deactivate(self, message):
         return "stop" in message or "deactivate" in message or "leave" in message or "quit" in message
