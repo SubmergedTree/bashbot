@@ -49,14 +49,14 @@
     :else         "Unknown command")))
 
 (def execute-response "I will execute the command...")
-(defn is-execute-response [message] (some #(= execute-response %1) message))
+(defn is-execute-response? [message] (some #(= execute-response %1) message))
 
 ; returns {:command "mkdir" :payload } extract command and payload
 (defn extract-command-and-keyword [message] ())
 
 (defn hook [messages] 
   (cond
-    (is-execute-response messages) (-> (first messages)
+    (is-execute-response? messages) (-> (first messages)
                                        extract-command-and-keyword
                                        execute-command)
     :else (messages)))
@@ -72,9 +72,8 @@
       (get-answer user-message)
       (recur (reader)))))
 
-(defn prompt [] (read-line))
 
 (defn -main
   "Basbhot cli client"
   [& args]
-  (do (println welcome-text) (chat-loop prompt get-answer-from-local-bot)))
+  (do (println welcome-text) (chat-loop read-line get-answer-from-local-bot)))
