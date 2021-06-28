@@ -17,8 +17,34 @@ stories:
   - action: example_parameter_form
   - active_loop: example_parameter_form
   - action: create_example_action
+  - action: utter_should_execute
+  - intent: deny
+  # TODO debug message if this path works
+# CLI only: should I execute this command
+# yes / no  api gw catches this question and returns automatically no when webclient is used
+# returns exec command param
 
-- story: explain bash command with detail explanation
+- story: explain bash command with detail explanation and execute 
+  steps:
+  - or:
+    - intent: explain_mkdir
+    - intent: explain_cat
+    - intent: explain_rm
+    - intent: explain_rmrf
+    - intent: explain_cd
+    - intent: generic_commands
+  - action: explain_action
+  - action: utter_explain
+  - intent: need_example
+  - action: ask_explain_action
+  - action: example_parameter_form
+  - active_loop: example_parameter_form
+  - action: create_example_action
+  - action: utter_should_execute
+  - intent: affirm
+  - action: utter_execute
+
+- story: explain bash command with documentation
   steps:
   - or:
     - intent: explain_mkdir

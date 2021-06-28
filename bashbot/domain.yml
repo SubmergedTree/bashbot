@@ -106,6 +106,12 @@ responses:
       - title: "I'm good"
         payload: "/deny"
 
+  utter_should_execute:
+  - text: "Should I execute this command?"
+
+  utter_execute:
+  - text: "EXECUTE" # PLACEHOLDER
+
   utter_quiz:
   - text: "Ok. Let's do a quiz! I will ask you some questions about basic bash commands."
 
