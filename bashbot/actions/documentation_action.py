@@ -15,10 +15,12 @@ class DocumentationAction(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         detected_command = tracker.slots['detected_command']
+        if detected_command == None:
+            dispatcher.utter_message(text="Sorry I did not understand you")
+            return []
         docs = self.query_man_pages(detected_command)
         dispatcher.utter_message(text=docs)
-
-        return [] # TODO clear slots
+        return []
 
     def query_man_pages(self, command):
         process = subprocess.Popen(["man", "--pager=cat", command],
