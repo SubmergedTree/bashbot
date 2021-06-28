@@ -84,6 +84,7 @@ nlu:
     - I need docs
     - I need more info
     - I need info
+    - doku
 
 - intent: need_example
   examples: |

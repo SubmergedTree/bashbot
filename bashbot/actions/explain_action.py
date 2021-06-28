@@ -15,11 +15,11 @@ class ExplainAction(Action):
     cd_explanation = """Use \"cd <name>\" to jump into a directory"""
 
     explain_command_matcher = {
-        'explain_mkdir': [["create", "make"], ["folder", "directory"]],
+        'explain_mkdir': [["create", "make"], ["folder", "directory", "dir"]],
         'explain_cat': [["read", "open", "show"], ["file"]],
         'explain_rm': [["remove", "delete"], ["file"]],
-        'explain_rmrf': [["remove", "delete"], ["folder", "directory"]],
-        'explain_cd': [["change", "jump"], ["folder", "directory"]]
+        'explain_rmrf': [["remove", "delete"], ["folder", "directory", "dir"]],
+        'explain_cd': [["change", "jump"], ["folder", "directory", "dir"]]
     }
 
     def name(self) -> Text:

@@ -106,5 +106,7 @@ Run the docker-compose file:
 - erklären bei quiz wie funktioniert DONE
 - stop quiz different response DONE
 - tts is still active DONE
-- handle thank you/thanks message
-- dir instead of directory
+- handle thank you/thanks message WONT FIX
+- dir instead of directory DONE
+- docu and doku keywords to needs documetation intent DONE
+- exception thrown when documentation is inputed when not in story DONE
