@@ -19,6 +19,7 @@ stories:
   - action: create_example_action
   - action: utter_should_execute
   - intent: deny
+  - action: explain_reset_action
   # TODO debug message if this path works
 # CLI only: should I execute this command
 # yes / no  api gw catches this question and returns automatically no when webclient is used
@@ -42,7 +43,8 @@ stories:
   - action: create_example_action
   - action: utter_should_execute
   - intent: affirm
-  - action: utter_execute
+  - action: execute_action
+  - action: explain_reset_action
 
 - story: explain bash command with documentation
   steps:
@@ -58,7 +60,6 @@ stories:
   - intent: need_documentation
   - action: documentation_action
 
-# TODO reset detected command slot action
 - story: explain bash command without detail explanation
   steps:
   - or:
@@ -72,4 +73,5 @@ stories:
   - action: utter_explain
   - intent: deny
   - action: utter_helpfull
+  - action: explain_reset_action
 

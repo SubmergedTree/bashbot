@@ -32,6 +32,4 @@ class CreateExampleAction(Action):
         if command != None and parameter != None:
             example = self.build_example(command, parameter)
             dispatcher.utter_message(text=example)
-            return [SlotSet("example_parameter", None), SlotSet("detected_command", None)] #todo reset in seperate action becase of execute
-        else:
-            return []
+        return []
