@@ -16,10 +16,6 @@
 (defn build-json-payload [rasa-payload]
   (str "{\"sender\": \""(:client-name rasa-payload)"\", \"message\": \""(:message rasa-payload)"\"}"))
 
-; TODO add missing headers: 
-; Content-Type application/json
-; Content-Length: ??
-; Host: ??
 (defn query-bashbot
   "Get next message from rasa"
   [url rasa-payload]
