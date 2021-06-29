@@ -1,6 +1,7 @@
 (ns bashbot-client.core
   (:require [clj-http.client :as client]
-            [cheshire.core :refer :all])
+            [cheshire.core :refer :all]
+            [clojure.string :as str])
   (:use [clojure.java.shell :only [sh]])
   (:gen-class))
 
@@ -11,14 +12,19 @@
 (defn make-rasa-payload ([client-name message]
                          (->RasaPayload client-name message)))
 
-(def rasa-url "http://localhost:5005/webhooks/rest/webhook/")
+(def rasa-url "http://localhost:3000/webhooks/rest/webhook/")
 (defn build-json-payload [rasa-payload]
   (str "{\"sender\": \""(:client-name rasa-payload)"\", \"message\": \""(:message rasa-payload)"\"}"))
 
+; TODO add missing headers: 
+; Content-Type application/json
+; Content-Length: ??
+; Host: ??
 (defn query-bashbot
   "Get next message from rasa"
   [url rasa-payload]
-  (:body (client/post url {:body (build-json-payload rasa-payload)})))
+  (:body (client/post url {:body (build-json-payload rasa-payload)
+                           :headers {"Content-Type" "application/json"}})))
 
 (defn is-exit-command? [command] (some #(= command %) [":q" "exit" "stop" "quit"]))
 (def is-not-exit-command? (complement is-exit-command?))
@@ -26,18 +32,24 @@
 (defn extract-answer [answer] (map #(:text %1) (cheshire.core/parse-string answer true)))
 (defn print-answers [answers] (print "=> ") (run! println answers) answers)
 
+; TODO filter out EXECUTE command payload before printing
+
 ; TODO hook function which is called after print answers with parameter response from bot to do local analysis
 (defn get-answer-from-bot [query-func hook user-message]
-  (-> (query-func (make-rasa-payload "foo-client-123" user-message))
+  (-> (query-func (make-rasa-payload "cli-client-01" user-message))
       extract-answer
       to-regular-array
       print-answers
       hook))
 
+(defrecord CommandData [command payload])
+(defn make-command-data ([command payload]
+  (->CommandData command payload)))
+
 (defn execute-command [command-data]
   (let [command-type (:command command-data)
         payload (:payload command-data)
-        is #(= command-type %1)]
+        is #(= command-type %1)] 
   (cond
     (is "mkdir")  (:out (sh "mkdir" payload))
     (is "cd")     (:out (sh "cd" payload))
@@ -48,18 +60,21 @@
     (is "touch")  (:out (sh "touch" payload))
     :else         "Unknown command")))
 
-(def execute-response "I will execute the command...")
-(defn is-execute-response? [message] (some #(= execute-response %1) message))
+(defn is-execute-response? [message] (str/starts-with? message "EXECUTE"))
 
-; returns {:command "mkdir" :payload } extract command and payload
-(defn extract-command-and-keyword [message] ())
+(defn to-command-data [commands] 
+  (make-command-data (nth commands 1) (nth commands 2)))
+
+(defn extract-command-and-keyword [message] 
+  (-> (str/split message #"\s")
+      to-command-data))
 
 (defn hook [messages] 
   (cond
-    (is-execute-response? messages) (-> (first messages)
+    (is-execute-response? (first messages)) (-> (first messages)
                                        extract-command-and-keyword
                                        execute-command)
-    :else (messages)))
+    :else messages))
 
 (defn get-answer-from-local-bot
   [user-message]
@@ -76,4 +91,6 @@
 (defn -main
   "Basbhot cli client"
   [& args]
-  (do (println welcome-text) (chat-loop read-line get-answer-from-local-bot)))
+  (do (println welcome-text) 
+      (chat-loop read-line get-answer-from-local-bot) 
+      (System/exit 0))) ; to close thread pool used by sh
