@@ -39,6 +39,7 @@ entities:
   - detected_command
   - example_parameter
   - quiz_aborted
+  - is_command_detected
 
 slots:
   # for trainer
@@ -75,10 +76,15 @@ slots:
     type: bool
     auto_fill: false
     influence_conversation: false   
+  is_command_detected:
+    type: bool
 
 responses:
   utter_greet:
   - text: "Hey! Please ask me about bash commands or for a quiz."
+
+  utter_greet_err:
+  - text: "Please tell me what you want to do. Then I can give you an example"
 
   utter_whoami:
   - text: "I am Bashbot. \n
@@ -97,6 +103,9 @@ responses:
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
+
+  utter_not_execute:
+  - text: "Fine, I think we are finished here."
 
   utter_explain:
   - text: "Do you need an example or more documentation?"

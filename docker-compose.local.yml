@@ -12,11 +12,15 @@ services:
         image: action_server:latest
         expose: 
             - 5055
-    duckling:
-        image: rasa/duckling
-        ports:
-            - 8000:8000
+    #duckling:
+    #    image: rasa/duckling
+    #    ports:
+    #        - 8000:8000
     webclient:
         image: webclient:latest
         ports:
             - 80:80
+    api-gw:
+        image: api_gw:latest
+        ports:
+            - 3000:3000

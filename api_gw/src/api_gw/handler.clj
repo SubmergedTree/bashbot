@@ -3,17 +3,20 @@
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.json :refer [wrap-json-body]]
+            [ring.middleware.cors :refer [wrap-cors]]
             [clojure.string :as str]
             [cheshire.core :refer :all]
             [clj-http.client :as client]))
 
 (def rasa-url "http://localhost:5005/webhooks/rest/webhook/")
+(def rasa-url-container "http://rasa:5005/webhooks/rest/webhook/")
+
 (defn build-json-payload [client-name message]
   (str "{\"sender\": \"" client-name "\", \"message\": \"" message "\"}"))
 (defn to-rasa-server [sender message]
   (let [json-payload (build-json-payload sender message)]
     (println json-payload)
-    (:body (client/post rasa-url {:body json-payload}))))
+    (:body (client/post rasa-url-container {:body json-payload}))))
 
 (defn send-no-to-rasa [sender] (to-rasa-server sender "No"))
 
@@ -36,6 +39,7 @@
         message (get-in req  [:body "message"])
         is-cli-client (str/starts-with? sender "cli")
         rasa-answer (to-rasa-server sender message)]
+    (println rasa-answer)
     (if is-cli-client
       rasa-answer
       (filter-execute-message sender rasa-answer))))
@@ -46,5 +50,7 @@
 
 (def app
   (wrap-json-body 
-   app-routes 
-   (assoc-in site-defaults [:security :anti-forgery] false)))
+    app-routes
+ ;  (wrap-cors app-routes  :access-control-allow-origin [#".*"]
+ ;                      :access-control-allow-methods [:get :put :post :delete])
+    (assoc-in site-defaults [:security :anti-forgery] false)))

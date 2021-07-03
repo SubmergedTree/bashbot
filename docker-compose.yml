@@ -12,11 +12,15 @@ services:
         image: dockythedockerydocker/bashbot-action-server:latest
         expose: 
             - 5055
-    duckling:
-        image: rasa/duckling:latest
-        ports:
-            - 8000:8000
+    #duckling:
+    #    image: rasa/duckling:latest
+    #    ports:
+    #        - 8000:8000
     webclient:
         image: dockythedockerydocker/bashbot-webclient:latest
         ports:
             - 80:80
+    api-gw:
+        image: dockythedockerydocker/api-gw:latest
+        ports:
+            - 3000:3000

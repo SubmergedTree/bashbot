@@ -74,16 +74,8 @@ nlu:
 
 - intent: need_documentation
   examples: |
-    - I need more documentation
     - documentation
-    - more info needed
-    - more info
-    - manual needed
-    - I need the manual 
     - docs
-    - I need docs
-    - I need more info
-    - I need info
     - doku
 
 - intent: need_example
@@ -94,6 +86,9 @@ nlu:
     - show me an example
     - example needed
     - show example
+    - exampke
+    - exampoe
+    - eyxaple
 
 - intent: bot_challenge
   examples: |

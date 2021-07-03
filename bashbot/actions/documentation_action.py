@@ -23,9 +23,15 @@ class DocumentationAction(Action):
         return []
 
     def query_man_pages(self, command):
-        process = subprocess.Popen(["man", "--pager=cat", command],
+        filtered_command = self.filter_rmrf(command)
+        process = subprocess.Popen(["man", "--pager=cat", filtered_command],
                             stdout=subprocess.PIPE, 
                             stderr=subprocess.PIPE)
         stdout, stderr = process.communicate()
         print(stderr.decode("utf-8"))
-        return stdout.decode("utf-8").replace("\n\n", "\n")    
+        return stdout.decode("utf-8").replace("\n\n", "\n")   
+
+    def filter_rmrf(self, command):
+        if command == "rmrf":
+            return "rm"
+        return command

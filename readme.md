@@ -110,3 +110,38 @@ Run the docker-compose file:
 - dir instead of directory DONE
 - docu and doku keywords to needs documetation intent DONE
 - exception thrown when documentation is inputed when not in story DONE
+- docuemnttation must be written correct. No typos are accepted
+- generate random client id DONE
+- can duckling be removed ? Removed -> DONE
+- catch 500 from rasa -> catch exception, user mesaage that server could not be reached and shutdown DONE/WON't FIX
+- filter out EXECUTE command payload before printing DONE
+- better detect documentation
+- escape special signs e.g. "" in client DONE
+- dockerize client and api gw DONE
+- test webclient 
+- create testplan && test everything
+- update all containers
+- permanet alias for cli client
+
+- api gw does not send example back to webclient before sending no.
+
+[{"recipient_id":"c0ada759-ad2b-409e-844f-2f051888547b","text":"\"mkdir foo\""},{"recipient_id":"c0ada759-ad2b-409e-844f-2f051888547b","text":"Should I execute this command?"}]
+
+{"sender": "c0ada759-ad2b-409e-844f-2f051888547b", "message": "No"}
+
+In webclient:
+
+Do you need an example or more documentation?
+
+    Example
+    Documentation
+    I'm good
+
+/need_example
+Please give me the name of the directory to create.
+Please enter only the parameter.
+foo
+
+(example not received)
+
+

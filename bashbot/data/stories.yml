@@ -14,11 +14,14 @@ stories:
   - action: utter_explain
   - intent: need_example
   - action: ask_explain_action
+  - slot_was_set:
+    - is_command_detected: True
   - action: example_parameter_form
   - active_loop: example_parameter_form
   - action: create_example_action
   - action: utter_should_execute
   - intent: deny
+  - action: utter_not_execute
   - action: explain_reset_action
   # TODO debug message if this path works
 # CLI only: should I execute this command
@@ -38,6 +41,8 @@ stories:
   - action: utter_explain
   - intent: need_example
   - action: ask_explain_action
+  - slot_was_set:
+    - is_command_detected: True
   - action: example_parameter_form
   - active_loop: example_parameter_form
   - action: create_example_action
@@ -45,6 +50,23 @@ stories:
   - intent: affirm
   - action: execute_action
   - action: explain_reset_action
+
+- story: explain bash command with detail explanation and execute 
+  steps:
+  - or:
+    - intent: explain_mkdir
+    - intent: explain_cat
+    - intent: explain_rm
+    - intent: explain_rmrf
+    - intent: explain_cd
+    - intent: generic_commands
+  - action: explain_action
+  - action: utter_explain
+  - intent: need_example
+  - action: ask_explain_action
+  - slot_was_set:
+    - is_command_detected: False
+  - action: utter_greet_err
 
 - story: explain bash command with documentation
   steps:

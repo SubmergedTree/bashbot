@@ -31,5 +31,6 @@ class AskExampleAction(Action):
         if detected_command != None:
             message = self.get_question(detected_command)
             dispatcher.utter_message(text=message)
-        return []
+            return [SlotSet("is_command_detected", True)]
+        return [SlotSet("is_command_detected", False)]
 
