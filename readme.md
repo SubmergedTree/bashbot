@@ -123,5 +123,20 @@ Run the docker-compose file:
 - update all containers DONE
 - permanet alias for cli client
 - api gw does not send example back to webclient before sending no. (malformed json received from api gw) DONE
-- create conversation flow diagram
+- create conversation flow diagram DONE
 - execute cat does not print file content DONE
+- in quiz: exit quiz and exit should abort quiz
+- update jar artifact in github 
+
+-------------------------------------------------------------------------
+
+clojure.lang.ExceptionInfo: clj-http: status 400 {:cached nil, :request-time 3, :repeatable? false, :protocol-version {:name "HTTP", :major 1, :minor 1}, :streaming? true, :http-client #object[org.apache.http.impl.client.InternalHttpClient 0x5afcd9c7 "org.apache.http.impl.client.InternalHttpClient@5afcd9c7"], :chunked? false, :type :clj-http.client/unexceptional-status, :reason-phrase "Bad Request", :headers {"Access-Control-Allow-Origin" "*", "Access-Control-Expose-Headers" "filename", "Access-Control-Allow-Credentials" "true", "Content-Length" "188", "Content-Type" "text/html; charset=utf-8", "Connection" "keep-alive", "Keep-Alive" "5"}, :orig-content-encoding nil, :status 400, :length 188, :body "<!DOCTYPE html><meta charset=UTF-8><title>400 — Bad Request</title><style>html { font-family: sans-serif }</style>\n<h1>⚠️ 400 — Bad Request</h1><p>Failed when parsing body as json\n", :trace-redirects []}
+
+
+-------------------------------------------------------------------------
+
+{"sender": "1a493efb-e2f2-4501-81df-17b30208e4d7", "message": "documentation"}
+[]
+
+--------------------------------------------------------------------------
+
