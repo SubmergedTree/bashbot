@@ -123,3 +123,5 @@ Run the docker-compose file:
 - update all containers DONE
 - permanet alias for cli client
 - api gw does not send example back to webclient before sending no. (malformed json received from api gw) DONE
+- create conversation flow diagram
+- execute cat does not print file content
