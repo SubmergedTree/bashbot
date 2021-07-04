@@ -3,7 +3,6 @@
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
             [ring.middleware.json :refer [wrap-json-body]]
-            [ring.middleware.cors :refer [wrap-cors]]
             [clojure.string :as str]
             [cheshire.core :refer :all]
             [clj-http.client :as client]))
@@ -23,7 +22,7 @@
 (def should-execute-message "Should I execute this command?")
 
 (defn build-filtered-message [parsed]
-  (str "[{\"recipient_id\": " (:recipient_id parsed) ", \"text\": " (:text parsed) "}]"))
+  (str "[{\"recipient_id\": \"" (:recipient_id parsed) "\", \"text\": " (:text parsed) "}]"))
 
 (defn filter-execute-message [sender messages]
   (let [parsed (cheshire.core/parse-string messages true)]
@@ -51,6 +50,4 @@
 (def app
   (wrap-json-body 
     app-routes
- ;  (wrap-cors app-routes  :access-control-allow-origin [#".*"]
- ;                      :access-control-allow-methods [:get :put :post :delete])
     (assoc-in site-defaults [:security :anti-forgery] false)))
