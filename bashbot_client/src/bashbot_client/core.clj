@@ -30,7 +30,7 @@
 (defn to-regular-array [x] (reduce conj [] x))
 (defn extract-answer [answer] (map #(:text %1) (cheshire.core/parse-string answer true)))
 (defn filter-execute [answer] (str/replace answer #"EXECUTE" "I executed"))
-(defn filter-answers [answers] (map filter-execute answers))
+(defn filter-answers [answers] (map filter-execute answers)) ; This is stupid. hook will not work any more
 (defn print-answers [answers] (print "\n=> ") (run! println answers) answers)
 
 (def client-id (str "cli-client-" (rand-int 100000)))
@@ -61,10 +61,10 @@
     (is "touch")  (:out (sh "touch" payload))
     :else         "Unknown command"))))
 
-(defn is-execute-response? [message] (str/starts-with? message "EXECUTE"))
+(defn is-execute-response? [message] (str/starts-with? message "I executed"))
 
 (defn to-command-data [commands] 
-  (make-command-data (nth commands 1) (nth commands 2)))
+  (make-command-data (nth commands 2) (nth commands 3)))
 
 (defn extract-command-and-keyword [message] 
   (-> (str/split message #"\s")
