@@ -120,7 +120,7 @@ Run the docker-compose file:
 - dockerize client and api gw DONE
 - test webclient 
 - create testplan && test everything
-- update all containers
+- update all containers DONE
 - permanet alias for cli client
 
 - api gw does not send example back to webclient before sending no.
@@ -143,5 +143,3 @@ Please enter only the parameter.
 foo
 
 (example not received)
-
-
