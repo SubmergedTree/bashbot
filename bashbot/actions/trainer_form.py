@@ -104,4 +104,4 @@ class ValidateTrainerForm(FormValidationAction):
         return {"cd_answer": slot_value, "quiz_aborted": False}
 
     def should_deactivate(self, message):
-        return "stop" in message or "deactivate" in message or "leave" in message or "quit" in message
+        return "stop" in message or "deactivate" in message or "leave" in message or "quit" in message or "exit quiz" in message or "exit" in message

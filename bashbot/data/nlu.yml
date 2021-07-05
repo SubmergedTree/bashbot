@@ -147,6 +147,8 @@ nlu:
     - explain how to delete a file
     - how to delete a file
     - how to delete files
+    - how to remove a file ? 
+    - how to remove a file
 
 - intent: explain_cat
   examples: |

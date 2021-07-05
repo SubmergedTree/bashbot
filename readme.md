@@ -115,18 +115,19 @@ Run the docker-compose file:
 - can duckling be removed ? Removed -> DONE
 - catch 500 from rasa -> catch exception, user mesaage that server could not be reached and shutdown DONE/WON't FIX
 - filter out EXECUTE command payload before printing DONE
-- better detect documentation
+- better detect documentation DONE
 - escape special signs e.g. "" in client DONE
 - dockerize client and api gw DONE
 - test webclient DONE
-- create testplan && test everything
+- create testplan && test everything DONE
 - update all containers DONE
 - permanet alias for cli client
 - api gw does not send example back to webclient before sending no. (malformed json received from api gw) DONE
 - create conversation flow diagram DONE
 - execute cat does not print file content DONE
-- in quiz: exit quiz and exit should abort quiz
+- in quiz: exit quiz and exit should abort quiz DONE
 - update jar artifact in github 
+- remove direcotry execute chrashes because does not find file
 
 -------------------------------------------------------------------------
 

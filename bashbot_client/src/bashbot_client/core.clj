@@ -90,7 +90,7 @@
       (get-answer user-message)
       (recur (reader)))))
 
-(def is-debug? true)
+(def is-debug? false)
 
 (defn -main
   "Basbhot cli client"
