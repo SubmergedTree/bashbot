@@ -1,7 +1,7 @@
 # api_gw
 
-Test mode:  lein ring server-headless
+## Run from source:  ```lein ring server-headless```
 
-Build jar: lein ring uberjar
+## Build jar: ```lein ring uberjar```
 
-Execute: java -jar path/to/hello-world-0.1.0-standalone.jar
+## Execute: ```java -jar path/to/api_gw-0.1.0-standalone.jar```
