@@ -56,7 +56,7 @@
     (is "cd")     (:out (sh "cd" payload))
     (is "cat")    (:out  (sh "cat" payload))
     (is "rm")     (:out (sh "rm" payload))
-    (is "rmrf") (:out (sh "rm -rf" payload))
+    (is "rmrf") (:out (sh "rm" "-rf" payload))
     (is "ls")     (:out (sh "ls"))
     (is "touch")  (:out (sh "touch" payload))
     :else         "Unknown command"))))
